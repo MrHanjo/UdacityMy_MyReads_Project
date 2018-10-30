@@ -6,15 +6,14 @@ function HomePage(props) {
 
         return(
           
-               //... continued from above... if the above is false then do this below
           <div className="list-books">
           <div className="list-books-title">
            
             <h1>MyReads</h1>
 
-            <Link   //maybe change className to a pre-existing class, I just made one up here
+            <Link   
               to='/search'                
-              className="perform-search-link" 
+              className="perform-search-link" 	//maybe change className to a pre-existing class, I just made one up here
             >
               Go to Search Page
             </Link>
@@ -30,7 +29,6 @@ function HomePage(props) {
                 <div className="bookshelf-books">
                   <ol className="books-grid">
                     {
-                      //this.props.books
                       props.books
                         .filter(book => book.shelf === 'currentlyReading')
                         .map(book => (
@@ -96,14 +94,8 @@ function HomePage(props) {
               </div>
             </div>
           </div>
-          
-          {/* Potential additional feature for later...
-          <div className="open-search">
-            <Link to="/search">Add a book</Link>
-          </div> */}
         </div>
         )
-    //}
 }
 
 export default HomePage;

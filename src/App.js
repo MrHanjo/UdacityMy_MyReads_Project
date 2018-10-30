@@ -14,8 +14,8 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  //this fills the components with data afer the the component this mounts
-  //THIS IS A LIFECYCLE EVENT... First thing you do is make the state or array of books, then you break it down
+  //this fills the components with data(fills the array of 'books') afer the the component mounts
+  //LIFECYCLE EVENT
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
@@ -24,10 +24,11 @@ class BooksApp extends React.Component {
 
   changeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf)
-    BooksAPI.getAll().then((books) => {   //THIS IS THE SAME AS JUST ABOVE... ALL THIS IS DOING 
-      this.setState({ books: books })     //IS SETTING THE STATE AGAIN SO YOU NEED TO 
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books: books })     //YOU'RE SETTING THE STATE AGAIN SO YOU NEED TO 
     })                                    //REFRESH THE PAGE WHICH IS WHAT THIS DOES
   }
+  
 //----------------------------------------------------------------------------------------------------------
 
   render() {

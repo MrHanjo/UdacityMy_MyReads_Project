@@ -16,7 +16,7 @@ class SearchPage extends Component {
     this.updateSearchResults(query);
   }
   
-  updateSearchResults = (query) => { //QUERY fetches results, screens for errors and assigns to state ELSE there yields an empty array
+  updateSearchResults = (query) => { //QUERY fetches results, screens for errors, and assigns them to state; ELSE it yields an empty array
     if (query) {
       BooksAPI.search(query).then((searchResults) => {
         searchResults.error ? this.setState({ searchResults: [] }) : this.setState({ searchResults: searchResults })
@@ -50,9 +50,7 @@ class SearchPage extends Component {
                 {this.state.searchResults.map(searchResult => {
                   let shelf= "none";
 
-                  this.props.books.map(book => (
-                    book.id === searchResult.id ? shelf = book.shelf : ''
-                  ));
+                  this.props.books.map( book => ( book.id === searchResult.id ? shelf = book.shelf : '' ));
 
                   return (
                     <li key={searchResult.id}>
